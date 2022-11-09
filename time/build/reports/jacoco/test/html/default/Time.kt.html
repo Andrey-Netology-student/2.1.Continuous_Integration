@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Time.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">time</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Time.kt</span></div><h1>Time.kt</h1><pre class="source lang-java linenums">// Р—Р°РґР°С‡Р° в„–1. РўРѕР»СЊРєРѕ С‡С‚Рѕ
+fun main(args: Array&lt;String&gt;) {
+<span class="nc" id="L3">    println(&quot;Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РІ СЃРµРєСѓРЅРґР°С…, РєРѕРіРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїРѕРєРёРЅСѓР» С‡Р°С‚: &quot;)</span>
+
+<span class="nc" id="L5">    val inputTime = Integer.valueOf(readLine()) //РџСЂРёРЅРёРјР°РµС‚ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ С‚РёРї РґР°РЅРЅС‹С…</span>
+<span class="nc" id="L6">    val message:String = agoToText(inputTime) //РЎРѕС…СЂР°РЅРµРЅРёРµ РІ РїРµСЂРµРјРµРЅРЅСѓСЋ Р·РЅР°С‡РµРЅРёСЏ, РєРѕС‚РѕСЂРѕРµ РІРѕР·РІСЂР°С‰Р°РµС‚ РјРµС‚РѕРґ agoToText</span>
+<span class="nc" id="L7">    println(message)</span>
+<span class="nc" id="L8">}</span>
+<span class="fc" id="L9">fun agoToText(inputTime: Int):String = when (inputTime) {</span>
+<span class="pc bpc" id="L10" title="3 of 6 branches missed.">    in 0..60 -&gt; &quot;Р±С‹Р»(Р°) С‚РѕР»СЊРєРѕ С‡С‚Рѕ&quot; //0 - 60</span>
+<span class="pc bpc" id="L11" title="3 of 6 branches missed.">    61, 21 * 60, 31 * 60, 41 * 60, 51 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60 + &quot; РјРёРЅСѓС‚Сѓ РЅР°Р·Р°Рґ&quot;} //1, 21, 31, 41, 51 - РјРёРЅСѓС‚Сѓ</span>
+<span class="pc bpc" id="L12" title="3 of 6 branches missed.">    in 2 * 60..4 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60 + &quot; РјРёРЅСѓС‚С‹ РЅР°Р·Р°Рґ&quot;} //2, 3, 4 - РјРёРЅСѓС‚С‹</span>
+<span class="pc bpc" id="L13" title="3 of 6 branches missed.">    in 5 * 60..1 * 60 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60 + &quot; РјРёРЅСѓС‚ РЅР°Р·Р°Рґ&quot;} //РћСЃС‚Р°Р»СЊРЅРѕРµ - РјРёРЅСѓС‚</span>
+<span class="pc bpc" id="L14" title="3 of 6 branches missed.">    1 * 60 * 60 + 1, 21 * 60 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60/60 + &quot; С‡Р°СЃ РЅР°Р·Р°Рґ&quot;} //1 Рё 21 - С‡Р°СЃ</span>
+<span class="pc bpc" id="L15" title="3 of 6 branches missed.">    in 2 * 60 * 60..4 * 60 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60/60 + &quot; С‡Р°СЃР° РЅР°Р·Р°Рґ&quot;} //2,3,4 - С‡Р°СЃР°</span>
+<span class="pc bpc" id="L16" title="3 of 6 branches missed.">    in 22 * 60 * 60..24 * 60 * 60 -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60/60 + &quot; С‡Р°СЃР° РЅР°Р·Р°Рґ&quot;} //22,23,24 - С‡Р°СЃР°</span>
+<span class="pc bpc" id="L17" title="3 of 6 branches missed.">    in 5 * 60 * 60..20 * 60 * 60  -&gt; {&quot;Р±С‹Р»(Р°) &quot; + inputTime/60/60 + &quot; С‡Р°СЃРѕРІ РЅР°Р·Р°Рґ&quot;} //5 - 20 С‡Р°СЃРѕРІ</span>
+<span class="pc bpc" id="L18" title="3 of 6 branches missed.">    in 24 * 60 * 60 + 1..48 * 60 * 60 -&gt; &quot;Р±С‹Р»(Р°) РІС‡РµСЂР°&quot;</span>
+<span class="pc bpc" id="L19" title="3 of 6 branches missed.">    in 48 * 60 * 60 + 1..72 * 60 * 60 -&gt; &quot;Р±С‹Р»(Р°) РїРѕР·Р°РІС‡РµСЂР°&quot;</span>
+<span class="fc" id="L20">    else -&gt; &quot;Р±С‹Р»(Р°) РґР°РІРЅРѕ&quot;</span>
+<span class="fc" id="L21">}</span>
+
+// 0 - 60 - С‚РѕР»СЊРєРѕ С‡С‚Рѕ
+// 61 - 3060 - 1, 21, 31, 41, 51 РјРёРЅСѓС‚Сѓ РЅР°Р·Р°Рґ
+// 120 - 240 - 2, 3, 4 РјРёРЅСѓС‚С‹ РЅР°Р·Р°Рґ
+// 300 - 3600 - РјРёРЅСѓС‚ РЅР°Р·Р°Рґ
+// 3601 - 75600 - 1 Рё 21 С‡Р°СЃ РЅР°Р·Р°Рґ
+// 7200 - 14400 - 2,3,4 С‡Р°СЃР° РЅР°Р·Р°Рґ
+// 79200 - 86400 - 22,23,24 С‡Р°СЃР° РЅР°Р·Р°Рґ
+// 18000 - 72000 - 5-20 С‡Р°СЃРѕРІ РЅР°Р·Р°Рґ
+// 86401 - 172800 - РІС‡РµСЂР°
+// 172801 - 259200 - РїРѕР·Р°РІС‡РµСЂР°
+// 259201 - +в€ћ РґР°РІРЅРѕ
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

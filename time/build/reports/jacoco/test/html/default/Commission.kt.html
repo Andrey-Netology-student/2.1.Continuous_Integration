@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Commission.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">time</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Commission.kt</span></div><h1>Commission.kt</h1><pre class="source lang-java linenums">// Р—Р°РґР°С‡Р° в„–2. Р Р°Р·РЅР°СЏ РєРѕРјРёСЃСЃРёСЏ
+fun main(args: Array&lt;String&gt;) {
+<span class="nc" id="L3">    var pastTransfers: Double = 0.0</span>
+<span class="nc" id="L4">    var card = 1 //vkPay</span>
+<span class="nc" id="L5">    var amount = 0</span>
+
+<span class="nc" id="L7">    while (true) { //Р§С‚РѕР±С‹ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ СЃРґРµР»Р°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РїРµСЂРµРІРѕРґРѕРІ Рё РїСЂРµРІС‹СЃРёС‚СЊ Р»РёРјРёС‚</span>
+<span class="nc" id="L8">        println(&quot;Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РєР°СЂС‚С‹/СЃС‡С‘С‚Р°:\n1-vkPay\n2-MasterCard\n3-Maestro\n4-Visa\n5-РњРёСЂ&quot;) //Р­С‚Рѕ РґР»СЏ СѓРґРѕР±СЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</span>
+<span class="nc" id="L9">        card = Integer.valueOf(readLine())</span>
+
+<span class="nc" id="L11">        println(&quot;Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїРµСЂРµРІРѕРґР° РёР»Рё 0 РґР»СЏ РІС‹С…РѕРґР°: &quot;)</span>
+<span class="nc" id="L12">        amount = Integer.valueOf(readLine()) //РџСЂРёРЅРёРјР°РµС‚ СЃСѓРјРјСѓ РїРµСЂРµРІРѕРґР°</span>
+
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        if (amount == 0) { //РџРѕСЃР»Рµ РІРІРѕРґР° 0 - РІС‹С…РѕРґ РёР· С†РёРєР»Р°</span>
+<span class="nc" id="L15">            break</span>
+        }
+
+<span class="nc" id="L18">        val commission: Double = calculateCommission(pastTransfers, card, amount)</span>
+<span class="nc" id="L19">        pastTransfers += amount - commission //Р‘РµР· СѓС‡С‘С‚Р° РєРѕРјРёСЃСЃРёРё Р·Р° РїРµСЂРµРІРѕРґС‹</span>
+<span class="nc" id="L20">        println(&quot;РљРѕРјРёСЃСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ &quot; + commission + &quot;СЂСѓР±Р»РµР№&quot;)</span>
+    }
+<span class="nc" id="L22">}</span>
+
+fun calculateCommission(pastTransfers: Double, card: Int, amount: Int): Double {
+<span class="fc" id="L25">    var tax: Double = 0.0</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">    if (card == 1) { //vkPay</span>
+<span class="pc bpc" id="L27" title="1 of 4 branches missed.">        if (amount &gt; 15_000 || pastTransfers &gt; 40_000) {</span>
+<span class="fc" id="L28">            println(&quot;Р›РёРјРёС‚ РїРµСЂРµРІРѕРґРѕРІ РїСЂРµРІС‹С€РµРЅ!&quot;)</span>
+        } else {
+<span class="fc" id="L30">            tax = 0.0</span>
+        }
+
+    } else if (card == 2 || card == 3) { //MasterCard Рё Maestro
+<span class="fc" id="L34">        var mTax = amount * 0.006 + 20 //РљРѕРјРёСЃСЃРёСЏ РґР»СЏ MasterCard Рё Maestro</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (amount &gt; 150_000 || pastTransfers &gt; 600_000) {</span>
+<span class="fc" id="L36">            println(&quot;Р›РёРјРёС‚ РїРµСЂРµРІРѕРґРѕРІ РїСЂРµРІС‹С€РµРЅ!&quot;)</span>
+<span class="pc bpc" id="L37" title="1 of 4 branches missed.">        } else if (pastTransfers &gt; 75000 || amount &gt; 75000) {</span>
+<span class="fc" id="L38">            tax = mTax</span>
+        } else {
+<span class="fc" id="L40">            tax = 0.0</span>
+        }
+
+    } else if (card == 4 || card == 5) { //Visa Рё РњРёСЂ
+<span class="fc" id="L44">        var vTax = amount * 0.0075 //РљРѕРјРёСЃСЃРёСЏ РґР»СЏ Visa Рё РњРёСЂ</span>
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">        if (amount &gt; 150_000 || pastTransfers &gt; 600_000) {</span>
+<span class="fc" id="L46">            println(&quot;Р›РёРјРёС‚ РїРµСЂРµРІРѕРґРѕРІ РїСЂРµРІС‹С€РµРЅ!&quot;)</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        } else if (vTax &lt; 35) {</span>
+<span class="fc" id="L48">            tax = 35.0 // 35.0</span>
+        } else {
+<span class="fc" id="L50">            tax = vTax</span>
+        }
+    }
+<span class="fc" id="L53">    return tax</span>
+}
+//gradle test jacocoTestReport
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

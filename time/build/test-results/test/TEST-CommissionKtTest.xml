@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CommissionKtTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-11-09T17:06:42" hostname="DESKTOP-DF5EQ1H" time="0.016">
+  <properties/>
+  <testcase name="testMirOverLimit" classname="CommissionKtTest" time="0.014"/>
+  <testcase name="testMir" classname="CommissionKtTest" time="0.001"/>
+  <testcase name="testVisa" classname="CommissionKtTest" time="0.0"/>
+  <testcase name="testVKFirst" classname="CommissionKtTest" time="0.0"/>
+  <testcase name="testMaestroOverLimit" classname="CommissionKtTest" time="0.0"/>
+  <testcase name="testMaestro" classname="CommissionKtTest" time="0.0"/>
+  <testcase name="testVKSecond" classname="CommissionKtTest" time="0.0"/>
+  <testcase name="testMasterCard" classname="CommissionKtTest" time="0.0"/>
+  <system-out><![CDATA[Лимит переводов превышен!
+Лимит переводов превышен!
+Лимит переводов превышен!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
